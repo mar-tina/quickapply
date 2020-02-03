@@ -6,7 +6,7 @@ const template = document.createElement("template");
 
 template.innerHTML = `
   <div>
-    
+
   </div>
   
 `;
@@ -22,7 +22,6 @@ function getPouchDBInstance() {
 class MyAttachments extends HTMLElement {
   connectedCallback() {
     getPouchDBInstance();
-
     console.log("Connected");
   }
 

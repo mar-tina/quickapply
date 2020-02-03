@@ -5,7 +5,7 @@ export class PouchInstance {
     this.pouch = null;
   }
 
-  //Fix for maximum call-stack-size-exceeded
+  //Fix for maximum call-stack-size-exceeded added the "'_'" infront of the class properties
   //https://stackoverflow.com/questions/34144430/es6-class-maximum-call-stack-size-exceeded
   get pouch() {
     return this._pouch;
