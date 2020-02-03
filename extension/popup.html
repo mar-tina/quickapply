@@ -7,7 +7,6 @@
         width: 250px;
         height: 300px;
         text-align: center;
-        line-height: 200px;
       }
     </style>
   </head>
@@ -15,10 +14,12 @@
     <div id="popup">
       <p>The easiest way to apply for jobs</p>
       <div>
-        <my-component></my-component>
+        <my-attachments></my-attachments>
       </div>
     </div>
 
-    <script src="popup.js"></script>
+    <script type="module" src="src/app.js"></script>
+    <script type="module" src="src/init.js"></script>
+    <script type="module" src="src/myattachments.js"></script>
   </body>
 </html>
