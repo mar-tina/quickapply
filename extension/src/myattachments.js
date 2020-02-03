@@ -2,10 +2,13 @@
 
 import { pouchDBInstance } from "./init.js";
 
-let template = `
-    <div>
-        <input type="file" />
-    </div>
+const template = document.createElement("template");
+
+template.innerHTML = `
+  <div>
+    
+  </div>
+  
 `;
 
 function getPouchDBInstance() {
@@ -18,10 +21,17 @@ function getPouchDBInstance() {
 
 class MyAttachments extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = template;
     getPouchDBInstance();
+
     console.log("Connected");
   }
+
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({ mode: "open" });
+    this._shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
 }
 
 customElements.define("my-attachments", MyAttachments);
