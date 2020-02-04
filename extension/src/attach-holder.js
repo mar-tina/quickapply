@@ -12,6 +12,20 @@ template.innerHTML = `
             justify-content: center;
             align-items: center;
             border-radius: 3%;
+            margin-bottom: 20px;
+        }
+
+        input {
+            margin: 20px;
+        }
+
+        button {
+            padding: 20px;
+            background: var(--main-active-item);
+            color: white;
+            border: none;
+            font-size: 14px;
+            font-family: var(--main-font-family);
         }
 
     </style>
@@ -28,7 +42,6 @@ template.innerHTML = `
 `;
 
 export default class AttachHolder extends HTMLElement {
-
   constructor() {
     super();
     this._files = [];
