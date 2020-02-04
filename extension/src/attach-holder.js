@@ -7,12 +7,14 @@ template.innerHTML = `
         #drop_zone {
             display: grid;
             padding: 20px;
-            border: 4px solid lightblue;
-            height: 100px;
+            border: 4px solid #67809f;
+            height: 130px;
             justify-content: center;
             align-items: center;
             border-radius: 3%;
             margin-bottom: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         input {
@@ -21,6 +23,12 @@ template.innerHTML = `
             font-size: 15px;
             font-family: var(--main-font-family);
             font-weight: 600;
+            border: 3px solid #67809f;
+            border-radius: 3%;
+        }
+
+        input:focus {
+            outline: none;
         }
 
         button {
@@ -30,12 +38,20 @@ template.innerHTML = `
             border: none;
             font-size: 14px;
             font-family: var(--main-font-family);
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--main-active-item);
         }
 
     </style>
     <input id="category" type="text" placeholder="category"/>
     <div id="drop_zone">
-        <img id="drop-img" src="images/dnd.svg" />
+        <div>
+            <img id="drop-img" src="images/dnd.svg" />
+        </div>
+        <p> Drag Items Here ! </p>
     </div>
 
     <div>

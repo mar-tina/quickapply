@@ -9,7 +9,8 @@ template.innerHTML = `
   <style>
     .tablinks {
       border: none;
-      padding: 20px;
+      padding-top: 20px;
+      padding-bottom: 10px;
       font-family: var(--main-font-family);
       font-weight: 600;
       font-size: 15px;
@@ -21,6 +22,10 @@ template.innerHTML = `
 
     .tablinks:hover {
       cursor: pointer;
+    }
+
+    .tablinks:focus {
+      outline: none;
     }
   </style>
 
