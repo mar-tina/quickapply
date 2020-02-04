@@ -27,11 +27,13 @@ template.innerHTML = `
 
 `;
 
-class AttachHolder extends HTMLElement {
+export default class AttachHolder extends HTMLElement {
+
   constructor() {
     super();
     this._files = [];
     console.log("The files", this._files);
+
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this._dropZone = this._shadowRoot.getElementById("drop_zone");
@@ -50,10 +52,9 @@ class AttachHolder extends HTMLElement {
     this._submitButton.addEventListener("click", e => this._completeImport(e));
 
     //Adding src to the drag and drop image
-    this._dropImg.src = runtime.getURL("images/dnd.svg");
+    this._dropImg.src = chrome.runtime.getURL("images/dnd.svg");
   }
 
-  //
   //Implementation from MDN Docs https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
   _handleDropZone(ev) {
     console.log("File(s) dropped");

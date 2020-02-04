@@ -3,11 +3,16 @@
   <head>
     <title>My First Chrome Extension</title>
     <style>
+      :root {
+        --main-bg-color: coral;
+        --main-font-family: "Courier New", Courier, monospace;
+        --main-font-weight: 600;
+      }
       html,
       body {
-        font-family: "Courier New", Courier, monospace;
+        font-family: var(--main-font-family);
         font-size: medium;
-        font-weight: 600;
+        font-weight: var(--main-font-weight);
       }
       #popup {
         width: 300px;
@@ -20,8 +25,7 @@
     <div id="popup">
       <p>The easiest way to apply for jobs</p>
       <div>
-        <my-attachments> </my-attachments>
-        <attach-holder></attach-holder>
+        <my-app> </my-app>
       </div>
     </div>
 
@@ -29,8 +33,7 @@
     <script type="module" src="src/index.js"></script>
     <script type="module" src="src/init.js"></script>
 
-    <!-- File Upload scripts -->
-    <script type="module" src="src/myattachments.js"></script>
-    <script type="module" src="src/attach-holder.js"></script>
+    <!-- App Entry -->
+    <script type="module" src="src/app.js"></script>
   </body>
 </html>
