@@ -6,7 +6,6 @@ import "./attach-holder.js";
 const template = document.createElement("template");
 
 template.innerHTML = `
-
   <style>
     .tablinks {
       border: none;
@@ -16,13 +15,17 @@ template.innerHTML = `
       font-size: 15px;
     }
 
+    .tablinks.active {
+      color: var(--main-active-item)
+    }
+
     .tablinks:hover {
       cursor: pointer;
     }
   </style>
 
   <div class="tabs">
-    <button id="importlink" class="tablinks"> Import </button>
+    <button id="importlink" class="tablinks active"> Import </button>
     <button id="draftslink" class="tablinks"> Drafts </button>
   </div>
 
@@ -47,7 +50,9 @@ function getPouchDBInstance() {
 class MyApp extends HTMLElement {
   connectedCallback() {
     getPouchDBInstance();
-    console.log("Connected");
+    //on load . Ensure the drafts page is not shown.
+    this._shadowRoot.getElementById("drafts").style.display = "none";
+    this._shadowRoot.getElementById("drafts").console.log("Connected");
   }
 
   constructor() {
@@ -61,6 +66,7 @@ class MyApp extends HTMLElement {
 
     //Get reference to all divs that are tab contents
     this._tabcontent = this._shadowRoot.querySelectorAll(".tabcontent");
+    this._tablinks = this._shadowRoot.querySelectorAll(".tablinks");
 
     //Add on click listeners to the tabs and pass the id
     this._importTab.addEventListener("click", e =>
@@ -71,16 +77,37 @@ class MyApp extends HTMLElement {
     );
   }
 
+  //Foundation for this feature was built on :
+  //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs
   _handleTabSwitch(e, id) {
     e.preventDefault();
-    let i;
+    let i, j;
+
+    //Loop is not executing for some reason. Decided to Handle the classname change manually by acessing
+    //the tablinks using their indices. Will come back and investigate
+    // for (j = 0; j < this._tablinks; j++) {
+    //   this._tablinks[j].className = this._tablinks[j].className.replace(
+    //     " active",
+    //     ""
+    //   );
+    //   console.log("The current tab", this._tablinks[j].className);
+    // }
 
     for (i = 0; i < this._tabcontent.length; i++) {
       this._tabcontent[i].style.display = "none";
     }
 
+    this._tablinks[0].className = this._tablinks[0].className.replace(
+      " active",
+      ""
+    );
+    this._tablinks[1].className = this._tablinks[1].className.replace(
+      " active",
+      ""
+    );
+
     this._shadowRoot.getElementById(id).style.display = "grid";
-    console.log("This is the tab content and id", this._tabcontent, id);
+    e.currentTarget.className += " active";
   }
 }
 
