@@ -18,3 +18,19 @@ export function importFiles(doc, files) {
       });
   });
 }
+
+export function getAttachmentStub(limit, skip) {
+  pouchDBInstance.pouch
+    .allDocs({
+      include_docs: true,
+      limit: limit,
+      skip: skip
+    })
+    .then(function(result) {
+      // handle result
+      console.log("The result", result);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+}

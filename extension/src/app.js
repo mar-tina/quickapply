@@ -2,6 +2,7 @@
 
 import { pouchDBInstance } from "./init.js";
 import "./attach-holder.js";
+import "./drafts.js";
 
 const template = document.createElement("template");
 
@@ -39,7 +40,7 @@ template.innerHTML = `
   </div>
 
   <div id="drafts" class="tabcontent">
-    <p> Drafts page </p>
+    <drafts-page></drafts-page>
   </div>
   
 `;
@@ -57,7 +58,6 @@ class MyApp extends HTMLElement {
     getPouchDBInstance();
     //on load . Ensure the drafts page is not shown.
     this._shadowRoot.getElementById("drafts").style.display = "none";
-    this._shadowRoot.getElementById("drafts").console.log("Connected");
   }
 
   constructor() {
