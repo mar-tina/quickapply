@@ -10,7 +10,7 @@ template.innerHTML = `
   <style>
     .tablinks {
       border: none;
-      padding-top: 20px;
+      padding-top: 10px;
       padding-bottom: 10px;
       font-family: var(--main-font-family);
       font-weight: 600;

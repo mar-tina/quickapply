@@ -14,14 +14,13 @@ template.innerHTML = `
         }
 
         .attachment {
-            overflow: scroll;
             resize: both;
             margin: 5px;
             box-shadow: 5px 10px #888888;
             padding: 10px;
         }
     </style>
-    <div id="attachments"> Welcome to the Drafts Page </div>
+    <div id="attachments"> Here are your saved Docs: </div>
 `;
 
 class DraftsPage extends HTMLElement {
