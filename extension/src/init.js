@@ -1,4 +1,4 @@
-import { PouchInstance } from "./app.js";
+import { PouchInstance } from "./index.js";
 
 export let pouchDBInstance = new PouchInstance();
 

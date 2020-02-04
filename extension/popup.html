@@ -3,9 +3,15 @@
   <head>
     <title>My First Chrome Extension</title>
     <style>
+      html,
+      body {
+        font-family: "Courier New", Courier, monospace;
+        font-size: medium;
+        font-weight: 600;
+      }
       #popup {
-        width: 250px;
-        height: 300px;
+        width: 300px;
+        height: 600px;
         text-align: center;
       }
     </style>
@@ -20,7 +26,7 @@
     </div>
 
     <!-- DB initialization scripts -->
-    <script type="module" src="src/app.js"></script>
+    <script type="module" src="src/index.js"></script>
     <script type="module" src="src/init.js"></script>
 
     <!-- File Upload scripts -->

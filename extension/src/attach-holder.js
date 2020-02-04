@@ -5,16 +5,20 @@ const template = document.createElement("template");
 template.innerHTML = `
     <style>
         #drop_zone {
-        display: grid;
-        padding: 20px;
-        border: 1px solid lightblue;
-        height: 100px;
+            display: grid;
+            padding: 20px;
+            border: 4px solid lightblue;
+            height: 100px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3%;
         }
+
     </style>
     <label for="category">Category</label>
     <input id="category" type="text"/>
     <div id="drop_zone">
-        Drag and drop files over here
+        <img id="drop-img" src="images/dnd.svg" />
     </div>
 
     <div>
@@ -33,6 +37,7 @@ class AttachHolder extends HTMLElement {
     this._dropZone = this._shadowRoot.getElementById("drop_zone");
     this._categoryInput = this._shadowRoot.getElementById("category");
     this._submitButton = this._shadowRoot.getElementById("submit");
+    this._dropImg = this._shadowRoot.getElementById("drop-img");
 
     // Handling DnD
     this._dropZone.addEventListener("drop", e => this._handleDropZone(e));
@@ -43,6 +48,9 @@ class AttachHolder extends HTMLElement {
 
     //Handling submission of files to the db.
     this._submitButton.addEventListener("click", e => this._completeImport(e));
+
+    //Adding src to the drag and drop image
+    this._dropImg.src = runtime.getURL("images/dnd.svg");
   }
 
   //
@@ -85,9 +93,10 @@ class AttachHolder extends HTMLElement {
 
   _completeImport(e) {
     e.preventDefault();
-    console.log("The input", this._categoryInput.value.length);
     if (this._categoryInput.value.length > 0) {
       importFiles(this._categoryInput.value, this._files);
+    } else {
+      console.log("Input is empty");
     }
   }
 
