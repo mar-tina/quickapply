@@ -19,18 +19,16 @@ export function importFiles(doc, files) {
   });
 }
 
-export function getAttachmentStub(limit, skip) {
-  pouchDBInstance.pouch
-    .allDocs({
-      include_docs: true,
-      limit: limit,
-      skip: skip
-    })
-    .then(function(result) {
-      // handle result
-      console.log("The result", result);
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
+export async function getAttachmentStub(limit, skip) {
+  let res = await pouchDBInstance.pouch.allDocs({
+    include_docs: true,
+    limit: limit,
+    skip: skip
+  });
+
+  if (res.error) {
+    console.log("Something went wrong", res.error);
+  }
+
+  return res;
 }
