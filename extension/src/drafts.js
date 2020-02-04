@@ -7,6 +7,33 @@ template.innerHTML = `
         #attachments {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        #draft_zone {
+            display: grid;
+            padding: 20px;
+            border: 4px solid #67809f;
+            height: 130px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3%;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .subject {
+            height: 30px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .sub-icon {
+            margin-left: 10px;
         }
 
         [draggable=true] {
@@ -19,8 +46,42 @@ template.innerHTML = `
             box-shadow: 5px 10px #888888;
             padding: 10px;
         }
+
+        .vl {
+            border-left: 3px solid coral;
+            height: 25px;
+            padding-right: 10px;
+        }
+
+        .sub-zone {
+            padding: 10px;
+            border: none;
+            font-family: var(--main-font-family);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .sub-zone:focus {
+            outline: none;
+        }
+
     </style>
     <div id="attachments"> Here are your saved Docs: </div>
+
+    <div class="subject"> 
+        <div class="vl"></div>
+        <img id="subj-img" src="images/subject.svg" />
+        <input class="sub-zone" placeholder="subject"/>
+    </div> 
+    <div id="draft_zone">
+        <div>
+            <img id="drop-img" src="images/dnd.svg" />
+        </div>
+        <p> Drag Attachments Here ! </p>
+    </div>
+
+    
+
 `;
 
 class DraftsPage extends HTMLElement {
@@ -33,6 +94,12 @@ class DraftsPage extends HTMLElement {
     this._attachments = {};
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
+
+    this._subjectEL = this._shadowRoot.querySelector(".subject");
+    this._subjectEL.addEventListener("drop", e => this._hanldeSubjectDrop(e));
+    this._subjectEL.addEventListener("dragover", e =>
+      this._hanldeSubjectDragover(e)
+    );
 
     //Get a ref to the attachments div
     this._attachmentEL = this._shadowRoot.getElementById("attachments");
@@ -53,6 +120,34 @@ class DraftsPage extends HTMLElement {
       this._attachmentEL.insertAdjacentElement("beforeend", attachEL);
     });
     console.log("The attachments", this._attachments);
+  }
+
+  _hanldeSubjectDrop(e) {
+    e.preventDefault();
+    if (e.dataTransfer.items) {
+      //   // Use DataTransferItemList interface to access the file(s)
+      //   for (var i = 0; i < e.dataTransfer.items.length; i++) {
+      //     // If dropped items aren't files, reject them
+      //     if (ev.dataTransfer.items[i].kind === "file") {
+      //       var file = ev.dataTransfer.items[i].getAsFile();
+      //       this._files.push(file);
+      //       console.log("... file[" + i + "].name = " + file.name);
+      //     }
+      //   }
+      // } else {
+      //   // Use DataTransfer interface to access the file(s)
+      //   for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+      //     console.log(
+      //       "... file[" + i + "].name = " + ev.dataTransfer.files[i].name
+      //     );
+      //   }
+      // }
+      console.log("The items", e.dataTransfer.items);
+    }
+  }
+  _hanldeSubjectDragover(e) {
+    console.log("File(s) in drop zone");
+    e.preventDefault();
   }
 }
 
