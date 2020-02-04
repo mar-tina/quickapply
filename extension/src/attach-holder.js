@@ -17,6 +17,10 @@ template.innerHTML = `
 
         input {
             margin: 20px;
+            padding: 15px;
+            font-size: 15px;
+            font-family: var(--main-font-family);
+            font-weight: 600;
         }
 
         button {
@@ -29,8 +33,7 @@ template.innerHTML = `
         }
 
     </style>
-    <label for="category">Category</label>
-    <input id="category" type="text"/>
+    <input id="category" type="text" placeholder="category"/>
     <div id="drop_zone">
         <img id="drop-img" src="images/dnd.svg" />
     </div>
