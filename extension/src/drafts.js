@@ -6,10 +6,7 @@ template.innerHTML = `
     <style>
         #attachments {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 10px;
-            margin-bottom: 20px;
+            overflow-y: hidden;
         }
 
         #draft_zone {
@@ -73,7 +70,8 @@ template.innerHTML = `
         }
 
     </style>
-    <div id="attachments"> Here are your saved Docs: </div>
+    <p>Here are your saved Docs: </p>
+    <div id="attachments">  </div>
 
     <div class="subject"> 
         <div class="vl"></div>
@@ -133,7 +131,6 @@ class DraftsPage extends HTMLElement {
     });
     console.log("The attachments", this._attachments);
   }
-
 }
 
 customElements.define("drafts-page", DraftsPage);
