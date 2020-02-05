@@ -58,6 +58,7 @@ class MyApp extends HTMLElement {
     getPouchDBInstance();
     //on load . Ensure the drafts page is not shown.
     this._shadowRoot.getElementById("drafts").style.display = "none";
+    // chrome.tabs.executeScript(null, { file: "content.js" });
   }
 
   constructor() {

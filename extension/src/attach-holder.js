@@ -1,4 +1,4 @@
-// import { importFiles } from "./db.js";
+import { importFiles } from "./db.js";
 
 const template = document.createElement("template");
 
@@ -58,12 +58,15 @@ template.innerHTML = `
         <button id="submit"> Complete Import </button>
     </div>
 
+    <p id="complete"> </p>  
+
 `;
 
 export default class AttachHolder extends HTMLElement {
   constructor() {
     super();
     this._files = [];
+    this._complete = "";
     console.log("The files", this._files);
 
     this._shadowRoot = this.attachShadow({ mode: "open" });
@@ -72,6 +75,7 @@ export default class AttachHolder extends HTMLElement {
     this._categoryInput = this._shadowRoot.getElementById("category");
     this._submitButton = this._shadowRoot.getElementById("submit");
     this._dropImg = this._shadowRoot.getElementById("drop-img");
+    this._completeInfo = this._shadowRoot.getElementById("complete");
 
     // Handling DnD
     this._dropZone.addEventListener("drop", e => this._handleDropZone(e));
@@ -128,9 +132,14 @@ export default class AttachHolder extends HTMLElement {
     e.preventDefault();
     if (this._categoryInput.value.length > 0) {
       importFiles(this._categoryInput.value, this._files);
+      this._completeInfo.innerHTML = "Successfully imported files";
     } else {
       console.log("Input is empty");
     }
+
+    setTimeout(function() {
+      this._completeInfo.innerHTML = "";
+    }, 3000);
   }
 
   disconnectedCallback() {
