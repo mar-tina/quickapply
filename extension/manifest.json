@@ -3,6 +3,7 @@
   "version": "1.0",
   "description": "Easiest way to apply and keep track of your job applications",
   "manifest_version": 2,
+  "web_accessible_resources": ["modal.html", "src/*", "pouchdb-7.1.1.min.js"],
   "browser_action": {
     "default_icon": "interview.svg",
     "default_popup": "popup.html",
@@ -12,7 +13,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["./src/content.js"]
+      "js": ["pouchdb-7.1.1.js", "content.js"]
     }
   ]
 }

@@ -82,11 +82,11 @@ class MyApp extends HTMLElement {
     );
   }
 
-  //Foundation for this feature was built on :
+  //Foundation this feature was built on :
   //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs
   _handleTabSwitch(e, id) {
     e.preventDefault();
-    let i, j;
+    let i;
 
     //Loop is not executing for some reason. Decided to Handle the classname change manually by acessing
     //the tablinks using their indices. Will come back and investigate

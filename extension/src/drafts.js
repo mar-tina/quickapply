@@ -32,6 +32,13 @@ template.innerHTML = `
             padding: 10px;
         }
 
+        .recipient {
+            height: 30px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
         .sub-icon {
             margin-left: 10px;
         }
@@ -69,6 +76,11 @@ template.innerHTML = `
     <div id="attachments"> Here are your saved Docs: </div>
 
     <div class="subject"> 
+        <div class="vl"></div>
+        <img id="subj-img" src="images/subject.svg" />
+        <input class="sub-zone" placeholder="subject"/>
+    </div> 
+    <div class="recipient"> 
         <div class="vl"></div>
         <img id="subj-img" src="images/subject.svg" />
         <input class="sub-zone" placeholder="subject"/>
@@ -122,33 +134,6 @@ class DraftsPage extends HTMLElement {
     console.log("The attachments", this._attachments);
   }
 
-  _hanldeSubjectDrop(e) {
-    e.preventDefault();
-    if (e.dataTransfer.items) {
-      //   // Use DataTransferItemList interface to access the file(s)
-      //   for (var i = 0; i < e.dataTransfer.items.length; i++) {
-      //     // If dropped items aren't files, reject them
-      //     if (ev.dataTransfer.items[i].kind === "file") {
-      //       var file = ev.dataTransfer.items[i].getAsFile();
-      //       this._files.push(file);
-      //       console.log("... file[" + i + "].name = " + file.name);
-      //     }
-      //   }
-      // } else {
-      //   // Use DataTransfer interface to access the file(s)
-      //   for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-      //     console.log(
-      //       "... file[" + i + "].name = " + ev.dataTransfer.files[i].name
-      //     );
-      //   }
-      // }
-      console.log("The items", e.dataTransfer.items);
-    }
-  }
-  _hanldeSubjectDragover(e) {
-    console.log("File(s) in drop zone");
-    e.preventDefault();
-  }
 }
 
 customElements.define("drafts-page", DraftsPage);

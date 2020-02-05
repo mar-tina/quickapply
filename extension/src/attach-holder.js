@@ -1,4 +1,4 @@
-import { importFiles } from "./db.js";
+// import { importFiles } from "./db.js";
 
 const template = document.createElement("template");
 
