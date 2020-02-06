@@ -24,8 +24,13 @@ it to be persistent. I do not know how i managed to overlook that simple but ver
 
 - Use a content script but without the popup
 
-  Then i decided the structure of that application was too cluttered anyways so i chose another approach.
-  Use a content script to detect the necessary elements that a user my want to copy: - links - images - [emails] mail:to
+  After i decided the structure of that application was too cluttered anyways i chose another approach.
+  Use a content script to detect the necessary elements that a user my want to copy:
+    
+    - links
+    - images
+    - emails [mail:to]
+    
   This approach was to limit the features of the extension to only collect the necessary data but structuring
   of the emails and templating is to be done in an SPA . The web application would be better suited
   to handle the bulk of the work . That is structuring the templates. Tracking whether the email was opened or not.
