@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First Chrome Extension</title>
+    <style>
+      :root {
+        --main-active-item: coral;
+        --main-font-family: "Courier New", Courier, monospace;
+        --main-font-weight: 600;
+      }
+      html,
+      body {
+        font-family: var(--main-font-family);
+        font-size: medium;
+        font-weight: var(--main-font-weight);
+        margin-top: 10px;
+      }
+      #popup {
+        width: 300px;
+        height: 600px;
+        text-align: center;
+      }
+
+      .header {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="popup">
+      <div class="header">
+        <img id="drop-img" src="images/qalogo.svg" />
+        <p>Easiest way to send content through mail</p>
+      </div>
+
+      <div>
+        <my-app> </my-app>
+      </div>
+    </div>
+
+    <!-- DB initialization scripts -->
+    <script type="module" src="src/index.js"></script>
+    <script type="module" src="src/init.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "QuickSend",
+  "version": "1.0",
+  "description": "Easiest way to send content through mail",
+  "manifest_version": 2,
+  "web_accessible_resources": ["src/*", "pouchdb-7.1.1.min.js"],
+  "browser_action": {
+    "default_icon": "interview.svg",
+    "default_popup": "popup.html",
+    "default_title": "QuickSend"
+  },
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
