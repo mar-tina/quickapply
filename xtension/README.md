@@ -15,6 +15,7 @@ it to be persistent. I do not know how i managed to overlook that simple but ver
 #### Steps Taken to try and overcome that initial flaw
 
 - Use a content Script
+
   First step was to try and introduce a content script because that would most definitely be persistent.
   My initial thought was to try and render it the same way when you click inspect the chrome devtools show
   up to the side and push the body content to the side. I did not want it to lay on top of the current document
@@ -22,6 +23,7 @@ it to be persistent. I do not know how i managed to overlook that simple but ver
   weak. I didn't know how exactly to even research this method if i was to pursue it.
 
 - Use a content script but without the popup
+
   Then i decided the structure of that application was too cluttered anyways so i chose another approach.
   Use a content script to detect the necessary elements that a user my want to copy: - links - images - [emails] mail:to
   This approach was to limit the features of the extension to only collect the necessary data but structuring
