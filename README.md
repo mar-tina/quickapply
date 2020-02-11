@@ -3,10 +3,10 @@
 ## The goal 
 To build an extension that allows users to send an email from the current page they are on
 
-- Allowing users to take screenshots
-- Grab links
-- Grab email accounts off the page
-- Create drafts to send later
+- [ ] Allowing users to take screenshots
+- [ ] Grab links
+- [ ] Grab email accounts off the page
+- [ ] Create drafts to send later [WIP]
 
 ## Future prospects
 - Autocomplete for sites that require you to input data step by step
